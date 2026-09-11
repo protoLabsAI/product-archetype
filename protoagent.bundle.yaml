@@ -23,7 +23,8 @@ verified_against: 0.164.0
 
 plugins:
   - { id: pm, url: https://github.com/protoLabsAI/pm-plugin, ref: v0.1.0 }
-  - { id: artifact, builtin: true }   # ships with protoAgent; the external artifact-plugin repo is archived
+  # artifact ships with protoAgent — the external artifact-plugin repo is archived.
+  - { id: artifact, builtin: true }
 
 enabled: [pm, artifact]   # suggested turn-on list (you apply it to plugins.enabled)
 

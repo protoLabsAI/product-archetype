@@ -15,14 +15,15 @@ coding agents). Same "PM," two jobs: this one decides *what* to build and *why*;
 | Plugin | Role |
 |---|---|
 | **[pm](https://github.com/protoLabsAI/pm-plugin)** | The Product Manager toolkit — 65 PM skills (discovery, strategy, execution, research, GTM, analytics), a markdown-native **PM Brain** (decisions / hypotheses / stakeholders with provenance-enforced evidence), five specialist subagents, and a brain dashboard. |
-| **[artifact](https://github.com/protoLabsAI/artifact-plugin)** | Generative UI — render roadmaps (Mermaid gantt), funnels and metrics (chart.js), personas and journey maps (React / SVG), wireframes, and markdown specs **inline**, instead of handing back files. |
+| **[artifact](https://github.com/protoLabsAI/protoAgent/tree/main/plugins/artifact)** (built into protoAgent) | Generative UI — render roadmaps (Mermaid gantt), funnels and metrics (chart.js), personas and journey maps (React / SVG), wireframes, and markdown specs **inline**, instead of handing back files. |
 
 The pairing is the point: a product manager lives on diagrams, charts, and one-pager mockups.
 The PM toolkit decides and remembers; artifact shows.
 
-The two members are **pinned to release tags** — `product-archetype` is a *tested combo*, not
-"whatever's latest." The installer locks the resolved commit SHA in `plugins.lock`; CI re-checks
-the pins weekly and opens a PR when a member cuts a new release (ADR 0049).
+`pm` is **pinned to a release tag** — `product-archetype` is a *tested combo*, not "whatever's
+latest." The installer locks the resolved commit SHA in `plugins.lock`; CI re-checks the pin weekly
+and opens a PR when `pm` cuts a new release (ADR 0049). `artifact` ships with protoAgent itself, so
+there's nothing to pin or fetch — the bundle declares it `builtin: true`.
 
 ## Install
 
