@@ -19,11 +19,11 @@ description: >-
   see the sibling project-manager-archetype (Project Manager).
 
 # The core version this pin set was last verified against (ADR 0049 rule 2).
-verified_against: 0.41.0
+verified_against: 0.164.0
 
 plugins:
   - { id: pm, url: https://github.com/protoLabsAI/pm-plugin, ref: v0.1.0 }
-  - { id: artifact, url: https://github.com/protoLabsAI/artifact-plugin, ref: v0.11.1 }
+  - { id: artifact, builtin: true }   # ships with protoAgent; the external artifact-plugin repo is archived
 
 enabled: [pm, artifact]   # suggested turn-on list (you apply it to plugins.enabled)
 
