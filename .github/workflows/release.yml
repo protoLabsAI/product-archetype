@@ -1,0 +1,26 @@
+# Fleet release ritual: tag vX.Y.Z from protoagent.bundle.yaml's `version:`, write
+# LLM-themed notes, create the GitHub release and post the Discord embed. The logic
+# lives in protoLabsAI/release-tools (plugin-release.yml auto-detects the bundle
+# manifest and labels the release as an archetype). Never `gh release create` by hand.
+#
+# Fires on a `chore: release vX.Y.Z` squash subject on main, or `gh workflow run Release`.
+# Idempotent: a re-run on an existing tag is a no-op.
+name: Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write # granted here: a called workflow can only downgrade
+
+jobs:
+  release:
+    # Fork guard: a fork must not cut releases under the upstream name.
+    if: >-
+      github.repository == 'protoLabsAI/product-archetype' &&
+      (github.event_name == 'workflow_dispatch' ||
+       startsWith(github.event.head_commit.message, 'chore: release v'))
+    uses: protoLabsAI/release-tools/.github/workflows/plugin-release.yml@v2
+    secrets: inherit # notes gateway + Discord webhook are org-level

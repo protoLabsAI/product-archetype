@@ -11,6 +11,11 @@
 
 id: product-archetype
 name: Product Manager
+# Release version — the source of truth for the vX.Y.Z tag. Read by release-tools'
+# plugin-release.yml (.github/workflows/release.yml); protoAgent's bundle loader ignores it.
+# Bump it in the PR that ships the release, then merge as `chore: release vX.Y.Z` (or
+# run the Release workflow by hand).
+version: 0.2.1
 description: >-
   A product-manager agent archetype — research, strategy, discovery, and specs, with everything
   visualized inline. Composes the Product Manager toolkit (65 PM skills + a provenance-enforced
