@@ -22,7 +22,7 @@ permissions:
 
 jobs:
   validate:
-    runs-on: ${{ vars.NSC_RUNNER || 'namespace-profile-protolabs-linux' }}
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -41,7 +41,7 @@ jobs:
   # the `bump` job's PR-lifecycle bug is shared with the other archetype repos.
   bump:
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-    runs-on: ${{ vars.NSC_RUNNER || 'namespace-profile-protolabs-linux' }}
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Check tag-pinned members for newer releases
